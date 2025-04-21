@@ -1,12 +1,13 @@
 import React from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Wallet } from "@/types";
-import { formatCurrency, getAssetColor } from "@/app/_utils/formatters";
+import { formatCurrency } from "@/lib/formatters";
+import { AssetIcon } from "./AssetIcon";
 
-interface AssetListProps {
+type AssetListProps = {
 	displayAssets: Wallet["assets"];
 	walletName?: string;
-}
+};
 
 export function AssetList({ displayAssets, walletName }: AssetListProps) {
 	return (
@@ -27,13 +28,15 @@ export function AssetList({ displayAssets, walletName }: AssetListProps) {
 							<TableRow key={index}>
 								<TableCell>
 									<div className="flex items-center gap-2">
-										<div className={`w-8 h-8 ${getAssetColor(asset.symbol)} rounded-full flex items-center justify-center text-white text-xs`}>{asset.symbol.charAt(0)}</div>
-										<span>{asset.symbol}</span>
+										<AssetIcon symbol={asset.symbol} />
+										<b>{asset.symbol}</b>
 									</div>
 								</TableCell>
 								<TableCell>{asset.type.charAt(0).toUpperCase() + asset.type.slice(1)}</TableCell>
 								<TableCell className="text-right">{asset.quantity.toString().replace(".", ",")}</TableCell>
-								<TableCell className="text-right">{asset.purchasePrice >= 1000 ? formatCurrency(asset.purchasePrice).replace(",", "") : formatCurrency(asset.purchasePrice)}</TableCell>
+								<TableCell className={`text-right font-medium ${asset.currentPrice > asset.purchasePrice ? "text-green-900" : ""}`}>
+									{asset.purchasePrice >= 1000 ? formatCurrency(asset.purchasePrice).replace(",", "") : formatCurrency(asset.purchasePrice)}
+								</TableCell>
 							</TableRow>
 						))}
 						{displayAssets.length === 0 && (

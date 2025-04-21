@@ -3,10 +3,10 @@ import { Wallet } from "@/types";
 import { Table, TableBody, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { WalletTableRow } from "./WalletTableRow";
 
-interface WalletListProps {
+type WalletListProps = {
 	portfolio: Wallet[];
 	selectedWallet?: Wallet;
-}
+};
 
 export function WalletList({ portfolio, selectedWallet }: WalletListProps) {
 	return (

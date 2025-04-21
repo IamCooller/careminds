@@ -1,16 +1,18 @@
-export interface Asset {
-	type: "stock" | "crypto";
+export type AssetType = "stock" | "crypto";
+
+export type Asset = {
+	type: AssetType;
 	symbol: string;
 	name: string;
 	quantity: number;
 	purchasePrice: number;
 	currentPrice: number;
-}
+};
 
-export interface Wallet {
+export type Wallet = {
 	walletName: string;
 	currentAmount: number;
 	spentAmount: number;
 	profitLoss: number;
 	assets: Asset[];
-}
+};

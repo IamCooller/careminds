@@ -3,14 +3,14 @@
 import React from "react";
 import { Wallet } from "@/types";
 import { TableRow, TableCell } from "@/components/ui/table";
-import { formatCurrency } from "@/app/_utils/formatters";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { formatCurrency } from "@/lib/formatters";
 
-interface WalletTableRowProps {
+type WalletTableRowProps = {
 	wallet: Wallet;
 	index: number;
 	isSelected: boolean;
-}
+};
 
 export function WalletTableRow({ wallet, index, isSelected }: WalletTableRowProps) {
 	const searchParams = useSearchParams();
@@ -24,10 +24,10 @@ export function WalletTableRow({ wallet, index, isSelected }: WalletTableRowProp
 	};
 
 	return (
-		<TableRow key={index} className={`cursor-pointer hover:bg-gray-50 ${isSelected ? "bg-blue-50" : ""}`} onClick={() => setWallet(wallet.walletName)}>
-			<TableCell className="font-medium">{wallet.walletName}</TableCell>
+		<TableRow key={index} className={`cursor-pointer font-medium hover:bg-gray-50 ${isSelected ? "bg-blue-50" : ""}`} onClick={() => setWallet(wallet.walletName)}>
+			<TableCell className="">{wallet.walletName}</TableCell>
 			<TableCell className="text-right">{formatCurrency(wallet.currentAmount)}</TableCell>
-			<TableCell className={`text-right ${wallet.profitLoss > 0 ? "text-green-500" : ""}`}>{formatCurrency(wallet.spentAmount)}</TableCell>
+			<TableCell className={`text-right ${wallet.profitLoss > 0 ? "text-green-900" : ""}`}>{formatCurrency(wallet.spentAmount)}</TableCell>
 		</TableRow>
 	);
 }
