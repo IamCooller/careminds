@@ -29,7 +29,7 @@ export default async function RootLayout({
 	return (
 		<html lang={"en"}>
 			<body className={`${inter.variable} ${inter.className}   antialiased `}>
-				<main className="min-h-screen">{children}</main>
+				<main className="min-h-screen bg-[#282C31] flex flex-col justify-center items-center ">{children}</main>
 			</body>
 		</html>
 	);
