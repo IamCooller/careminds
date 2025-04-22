@@ -6,13 +6,12 @@ import { AssetIcon } from "./AssetIcon";
 
 type AssetListProps = {
 	displayAssets: Wallet["assets"];
-	walletName?: string;
 };
 
-export function AssetList({ displayAssets, walletName }: AssetListProps) {
+export function AssetList({ displayAssets }: AssetListProps) {
 	return (
 		<div className="flex flex-col gap-2">
-			<p className="text-xl font-medium text-black mb-2">Assets {walletName && `- ${walletName}`}</p>
+			<p className="text-xl font-medium text-black mb-2">Assets</p>
 			<div className="border border-gray-200 rounded-lg overflow-hidden">
 				<Table>
 					<TableHeader>

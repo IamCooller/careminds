@@ -9,12 +9,12 @@ export function PortfolioDisplay({ portfolio, wallet }: { portfolio: Wallet[]; w
 	// Display assets based on selection or show first wallet assets by default if nothing selected
 	const displayAssets = selectedWallet ? selectedWallet.assets : portfolio.length > 0 ? portfolio[0].assets : [];
 	return (
-		<div className="grid md:grid-cols-2 gap-8 px-6 py-4 bg-white">
+		<div className="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 py-4 bg-white">
 			{/* Wallets Section */}
 			<WalletList portfolio={portfolio} selectedWallet={selectedWallet} />
 
 			{/* Assets Section */}
-			<AssetList displayAssets={displayAssets} walletName={selectedWallet?.walletName} />
+			<AssetList displayAssets={displayAssets} />
 		</div>
 	);
 }
